@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 
-class PostController extends Controller
+class EntryController extends Controller
 {
     public function createPost(): View
     {
