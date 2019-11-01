@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //POST ROUTES
-Route::get('/post/create', 'EntryController@createPost')
+Route::get('/entry', 'EntryController@showEntryForm')
     ->middleware('auth')->name('showEntryForm');
+Route::post('/entry/create', 'EntryController@createEntry')
+    ->middleware('auth')->name('createEntry');
 //END POST ROUTES
