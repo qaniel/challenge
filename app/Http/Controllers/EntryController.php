@@ -6,7 +6,7 @@ use Illuminate\View\View;
 
 class EntryController extends Controller
 {
-    public function createPost(): View
+    public function showEntryForm(): View
     {
         return view('post.create');
     }

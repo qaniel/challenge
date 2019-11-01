@@ -21,5 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //POST ROUTES
 Route::get('/post/create', 'EntryController@createPost')
-    ->middleware('auth')->name('createPost');
+    ->middleware('auth')->name('showEntryForm');
 //END POST ROUTES
