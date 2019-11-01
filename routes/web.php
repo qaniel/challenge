@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//POST ROUTES
+Route::get('/post/create', 'PostController@createPost')
+    ->middleware('auth')->name('createPost');
+//END POST ROUTES
