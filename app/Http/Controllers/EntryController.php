@@ -43,6 +43,12 @@ class EntryController extends Controller
         $entry->title = $data['title'];
         $entry->content = $data['content'];
         $entry->update();
+
         return Redirect::back()->with('success', 'Entry Updated!');
+    }
+
+    public function showEntry(Entry $entry): View
+    {
+        return view('post.view', ['entry' => $entry->toArray()]);
     }
 }
