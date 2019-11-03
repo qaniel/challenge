@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entry;
-use App\Http\Requests\CreateEntry;
+use App\Http\Requests\StoreEntry;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -16,7 +16,7 @@ class EntryController extends Controller
         return view('post.create');
     }
 
-    public function createEntry(CreateEntry $request): RedirectResponse
+    public function createEntry(StoreEntry $request): RedirectResponse
     {
         $data = $request->validated();
         $entryModel = new Entry();
@@ -26,5 +26,23 @@ class EntryController extends Controller
         $entryModel->save();
 
         return Redirect::back()->with('success', 'Entry Created!');
+    }
+
+    public function showEditEntryForm(Entry $entry): View
+    {
+        return view('post.edit', [
+            'id' => $entry->id,
+            'title' => $entry->title,
+            'content' => $entry->content,
+        ]);
+    }
+
+    public function updateEntry(StoreEntry $request, Entry $entry): RedirectResponse
+    {
+        $data = $request->validated();
+        $entry->title = $data['title'];
+        $entry->content = $data['content'];
+        $entry->update();
+        return Redirect::back()->with('success', 'Entry Updated!');
     }
 }
