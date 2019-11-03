@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <section class="container">
-        @include('components.flash-messages')
         <header>
             <h1>{{ __('Edit Entry:') }} {{ $title }}</h1>
         </header>
