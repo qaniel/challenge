@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasEagerLimit;
 
     /**
      * The attributes that are mass assignable.
@@ -44,5 +45,13 @@ class User extends Authenticatable
     public function entries(): HasMany
     {
         return $this->hasMany(Entry::class);
+    }
+
+    public function threeEntries(): HasMany
+    {
+        return $this->entries()
+            ->with('user')
+            ->limit(3)
+            ->latest();
     }
 }
