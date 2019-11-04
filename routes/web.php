@@ -15,7 +15,7 @@ Route::get('/', 'IndexController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 //ENTRY ROUTES
 Route::get('/entry/create', 'EntryController@showEntryForm')

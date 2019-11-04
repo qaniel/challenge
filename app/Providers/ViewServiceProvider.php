@@ -12,7 +12,7 @@ class ViewServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        View::composer('home', function (CurrentView $view) {
+        View::composer('dashboard', function (CurrentView $view) {
             $userId = Auth::user()->id;
             $userEntries = Entry::with('user')
                 ->where('user_id', '=', $userId)
