@@ -12,6 +12,6 @@ class IndexController extends Controller
         $entries = LastThreeEntriesPerUser::with(['entry', 'user'])
             ->orderByDesc('created_at')
             ->paginate(5);
-        return view('welcome', ['entries' => $entries]);
+        return view('landing', ['entries' => $entries]);
     }
 }
