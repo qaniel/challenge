@@ -32,3 +32,8 @@ Route::post('/entry/create', 'EntryController@createEntry')
 
 Route::get('/entry/{entry}', 'EntryController@showEntry')->name('showEntry');
 //END ENTRY ROUTES
+
+//USER ROUTES
+
+Route::get('/user/{user}/entries', 'UserController@showUserEntries')->name('showUserEntries');
+//END USER ROUTES
