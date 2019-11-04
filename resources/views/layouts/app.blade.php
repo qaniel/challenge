@@ -55,7 +55,7 @@
                             <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('showEntryForm') }}">{{ __('Create Post') }}</a>
+                            <a class="nav-link" href="{{ route('showEntryForm') }}">{{ __('Create Entry') }}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

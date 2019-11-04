@@ -14,7 +14,7 @@ class EntryController extends Controller
 {
     public function showEntryForm(): View
     {
-        return view('post.create');
+        return view('entry.create');
     }
 
     public function createEntry(StoreEntry $request): RedirectResponse
@@ -32,7 +32,7 @@ class EntryController extends Controller
 
     public function showEditEntryForm(Entry $entry): View
     {
-        return view('post.edit', [
+        return view('entry.edit', [
             'id' => $entry->id,
             'title' => $entry->title,
             'content' => $entry->content,
@@ -51,6 +51,6 @@ class EntryController extends Controller
 
     public function showEntry(Entry $entry): View
     {
-        return view('post.view', ['entry' => $entry->toArray()]);
+        return view('entry.view', ['entry' => $entry->toArray()]);
     }
 }
