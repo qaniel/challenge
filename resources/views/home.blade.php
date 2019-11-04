@@ -3,7 +3,10 @@
 @section('content')
     <section class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <article class="col-md-8">
+                <header>
+                    <h1>{{ __('Dashboard') }}</h1>
+                </header>
                 @foreach($userEntries as $entry)
                     <article class="card mb-2">
                         <header class="card-header">
@@ -22,7 +25,7 @@
                         </div>
                     </article>
                 @endforeach
-            </div>
+            </article>
         </div>
     </section>
 @endsection

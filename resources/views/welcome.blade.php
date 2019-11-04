@@ -2,12 +2,15 @@
 @section('content')
     <section class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <article class="col-md-8">
+                <header class="text-center">
+                    <h1>{{ __('What\'s Going On?') }}</h1>
+                </header>
                 {{ $entries->links() }}
                 @component('components.entry-card', ['userEntries' => $entries])
                 @endcomponent
                 {{ $entries->links() }}
-            </div>
+            </article>
         </div>
     </section>
 @endsection
