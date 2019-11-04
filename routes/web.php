@@ -18,8 +18,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //ENTRY ROUTES
-Route::get('/entry/{entry}', 'EntryController@showEntry')->name('showEntry');
-
 Route::get('/entry/create', 'EntryController@showEntryForm')
     ->middleware('auth')->name('showEntryForm');
 
@@ -31,4 +29,6 @@ Route::post('/entry/update/{entry}', 'EntryController@updateEntry')
 
 Route::post('/entry/create', 'EntryController@createEntry')
     ->middleware('auth')->name('createEntry');
+
+Route::get('/entry/{entry}', 'EntryController@showEntry')->name('showEntry');
 //END ENTRY ROUTES
