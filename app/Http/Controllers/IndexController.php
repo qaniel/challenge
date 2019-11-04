@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Entry;
 use App\User;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class IndexController extends Controller
 {
