@@ -10,7 +10,9 @@
             <p class="card-text">{{ $entry['entry']['content'] }}</p>
             <a href="{{ route('showEntry', [$entry['entry']['id']]) }}" class="card-link">{{ __('View') }}</a>
             @auth
-                <a href="{{ route('showEditForm', [$entry['entry']['id']]) }}" class="card-link">{{ __('Edit') }}</a>
+                @if(auth()->user()->id === $entry['user']['id'])
+                    <a href="{{ route('showEditForm', [$entry['entry']['id']]) }}" class="card-link">{{ __('Edit') }}</a>
+                @endif
             @endauth
         </div>
         <div class="card-footer text-muted">
