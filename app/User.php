@@ -48,9 +48,6 @@ class User extends Authenticatable
 
     public function threeEntries(): HasMany
     {
-        return $this->entries()
-            ->with('user')
-            ->limit(3)
-            ->latest();
+        return $this->hasMany(LastThreeEntriesPerUser::class);
     }
 }

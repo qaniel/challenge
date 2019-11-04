@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entry;
+use App\Events\EntryCreated;
 use App\Http\Requests\StoreEntry;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ class EntryController extends Controller
         $entryModel->content = $data['content'];
         $entryModel->user_id = Auth::user()->id;
         $entryModel->save();
+        event(new EntryCreated($entryModel));
 
         return Redirect::back()->with('success', 'Entry Created!');
     }
