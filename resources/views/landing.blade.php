@@ -17,8 +17,9 @@
                         @slot('showEntryLink'){{ route('showEntry', [$entry['entry']['id']]) }}@endslot
                         @slot('editLink')
                             @if(auth()->user()->id === $entry['user']['id'])
-                                <a href="{{ route('showEditForm', [$entry['entry']['id']]) }}"
-                                   class="card-link">{{ __('Edit') }}</a>
+                                <a href="{{ route('showEditForm', [$entry['entry']['id']]) }}" class="card-link">
+                                    {{ __('Edit') }}
+                                </a>
                             @endif
                         @endslot
                     @endcomponent

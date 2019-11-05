@@ -8,22 +8,19 @@
                     <h1>{{ __('Dashboard') }}</h1>
                 </header>
                 @foreach($userEntries as $entry)
-                    <article class="card mb-2">
-                        <header class="card-header">
-                            <h5>{{ $entry['title'] }}</h5>
-                            <h6 class="card-subtitle text-muted">
-                                {{ $entry['created_at'] }}
-                            </h6>
-                        </header>
-                        <div class="card-body">
-                            <p class="card-text">{{ $entry['content'] }}</p>
-                            <a href="{{ route('showEntry', [$entry['id']]) }}" class="card-link">{{ __('View') }}</a>
-                            <a href="{{ route('showEditForm', [$entry['id']]) }}" class="card-link">{{ __('Edit') }}</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            {{ __('By:') }} <strong>{{ $entry['user']['name'] }}</strong>
-                        </div>
-                    </article>
+                    @component('components.entry-card')
+                        @slot('title'){{ $entry['title'] }}@endslot
+                        @slot('userEntriesLink'){{ route('showUserEntries', [$entry['user']['id']]) }}@endslot
+                        @slot('user'){{ $entry['user']['name'] }}@endslot
+                        @slot('date'){{ $entry['created_at'] }}@endslot
+                        @slot('content'){{ $entry['content'] }}@endslot
+                        @slot('showEntryLink'){{ route('showEntry', [$entry['id']]) }}@endslot
+                        @slot('editLink')
+                            <a href="{{ route('showEditForm', [$entry['id']]) }}" class="card-link">
+                                {{ __('Edit') }}
+                            </a>
+                        @endslot
+                    @endcomponent
                 @endforeach
             </article>
         </div>
