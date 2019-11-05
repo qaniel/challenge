@@ -1,0 +1,29 @@
+.nav {
+    padding: 0 !important;
+    height: 5rem;
+
+    &__container {
+        height: 100%;
+    }
+
+    &__list-container {
+        height: 100%;
+    }
+
+    &__link {
+        min-width: 100px;
+        height: 100%;
+        text-align: center;
+        padding: 30px 0 30px 0 !important;
+        transition: all $transition-speed;
+        &:hover{
+            background-color: $secondary-color;
+            color: $neutral-color !important;
+        }
+        &--active{
+            background-color: $primary-color;
+            color: $neutral-color !important;
+        }
+    }
+}
+

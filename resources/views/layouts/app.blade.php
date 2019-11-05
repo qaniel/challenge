@@ -21,8 +21,8 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm nav">
+        <div class="container nav__container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
@@ -32,33 +32,33 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse nav__list-container" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto nav__list-container">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link nav__link {{ Route::currentRouteName() === 'login' ? 'nav__link--active' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link nav__link {{ Route::currentRouteName() === 'register' ? 'nav__link--active' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                            <a class="nav-link nav__link {{ Route::currentRouteName() === 'dashboard' ? 'nav__link--active' : '' }}" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('showEntryForm') }}">{{ __('Create Entry') }}</a>
+                            <a class="nav-link nav__link {{ Route::currentRouteName() === 'showEntryForm' ? 'nav__link--active' : '' }}" href="{{ route('showEntryForm') }}">{{ __('Create Entry') }}</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown " class="nav-link dropdown-toggle nav__link" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
