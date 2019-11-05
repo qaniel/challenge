@@ -17,8 +17,7 @@
             <div class="form-group">
                 <label for="content">{{ __('Entry Content') }}</label>
                 <textarea id="content" class="form-control @error('content') is-invalid @enderror"
-                       name="content"
-                          type="text" placeholder="{{ __('Entry Content') }}"></textarea>
+                       name="content" type="text" placeholder="{{ __('Entry Content') }}"></textarea>
                 @error('content')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
