@@ -13,8 +13,6 @@
     <div class="card-body">
         <p class="card-text">{{ $content }}</p>
         <a href="{{ $showEntryLink }}" class="card-link">{{ __('View') }}</a>
-        @auth
-            {{ $editLink }}
-        @endauth
+        {{ $editLink }}
     </div>
 </article>

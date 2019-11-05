@@ -43,6 +43,9 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
+                            <a class="nav-link nav__link {{ Route::currentRouteName() === 'index' ? 'nav__link--active' : '' }}" href="{{ route('index') }}">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link nav__link {{ Route::currentRouteName() === 'login' ? 'nav__link--active' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
