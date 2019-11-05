@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class DashboardControllerTest extends TestCase
 {
-    public function testDashboard()
+    public function testIndex()
     {
         $user = new User();
         $user->id = 1;
