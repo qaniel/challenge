@@ -51,7 +51,7 @@
                                 <div class="col-md-6">
                                     <input id="twitter-username" type="text"
                                            class="form-control @error('twitter-username') is-invalid @enderror"
-                                           name="twitter-username" value="{{ old('twitter-username') }}" required
+                                           name="twitter-username" value="{{ old('twitter-username') }}"
                                            autocomplete="twitter-username">
 
                                     @error('twitter-username')
