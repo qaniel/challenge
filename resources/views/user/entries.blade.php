@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <article class="col-md-8">
                 <header class="mb-5">
                     <h1>{{ $user['name'] }} {{ __('content') }}:</h1>
@@ -28,6 +28,16 @@
                 @endforeach
                 {{ $entries->links() }}
             </article>
+            <aside class="col-md-4">
+                @foreach($tweets as $tweet)
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <p class="card-text">{{ $tweet->text }}</p>
+                            <a class="card-link" href="">{{ __('Hide') }}</a>
+                        </div>
+                    </div>
+                @endforeach
+            </aside>
         </div>
     </section>
 @endsection

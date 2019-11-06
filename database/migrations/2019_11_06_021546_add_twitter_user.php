@@ -14,7 +14,7 @@ class AddTwitterUser extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table){
-            $table->string('twitter-username');
+            $table->string('twitter_username');
         });
     }
 
