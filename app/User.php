@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(LastThreeEntriesPerUser::class);
     }
+
+    public function hiddenTweets(): HasMany
+    {
+        return $this->hasMany(HiddenTweets::class);
+    }
 }
