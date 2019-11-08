@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         $entries = Entry::with('user')->where('user_id', '=', $user->id)->paginate(3);
         $userTweets = $this->getUserTweets($user->twitter_username);
-        dd($userTweets);
+        
         return view('user.entries', ['entries' => $entries, 'user' => $user, 'tweets' => $userTweets]);
     }
 
