@@ -45,16 +45,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="twitter-username"
+                                <label for="twitter_username"
                                        class="col-md-4 col-form-label text-md-right">{{ __('Twitter Username') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="twitter-username" type="text"
-                                           class="form-control @error('twitter-username') is-invalid @enderror"
-                                           name="twitter-username" value="{{ old('twitter-username') }}"
-                                           autocomplete="twitter-username">
+                                    <input id="twitter_username" type="text"
+                                           class="form-control @error('twitter_username') is-invalid @enderror"
+                                           name="twitter_username" value="{{ old('twitter_username') }}"
+                                           autocomplete="twitter_username">
 
-                                    @error('twitter-username')
+                                    @error('twitter_username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
