@@ -22,14 +22,16 @@ class TwitterController extends Controller
         $this->hiddenTweets->tweet_id = $id;
         $this->hiddenTweets->user_id = Auth::user()->id;
         $this->hiddenTweets->save();
+
         return response('', '201');
     }
 
-    public function unhideTweet(HiddenTweets $tweet): Response
+    public function unhideTweet(int $id): Response
     {
-        $this->hiddenTweets->tweet_id = $tweet->tweet_id;
-        $this->hiddenTweets->user_id = Auth::user()->id;
-        $this->hiddenTweets->delete();
-        return response('', '200');
+        $result = $this->hiddenTweets::with('user')
+            ->where('user_id', '=', Auth::user()->id)
+            ->where('tweet_id', '=', $id)->delete();
+
+        return response('', $result > 0 ? 200 : 404);
     }
 }

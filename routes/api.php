@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/tweet/hide/{id}', 'TwitterController@hideTweet')
     ->middleware('auth:api')->name('hideTweet');
 
-Route::delete('/tweet/unhide/{HiddenTweet}', 'TwitterController@unHideTweet')
+Route::delete('/tweet/unhide/{id}', 'TwitterController@unHideTweet')
     ->middleware('auth:api')->name('unHideTweet');
