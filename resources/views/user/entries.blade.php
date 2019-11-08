@@ -36,7 +36,7 @@
                         @endif
                     @endguest
                     @auth
-                        @if($tweet->hidden && Auth::user()->twitter_username !== $tweet->user->name)
+                        @if($tweet->hidden && Auth::user()->twitter_username !== $tweet->user->screen_name)
                             @continue
                         @endif
                     @endauth
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <p class="card-text">{{ $tweet->text }}</p>
                             @auth
-                                @if(Auth::user()->twitter_username === $tweet->user->name)
+                                @if(Auth::user()->twitter_username === $tweet->user->screen_name)
                                     <button
                                         class="btn btn-link unhide-twitter-status {{ $tweet->hidden ? '' : 'd-none' }}"
                                         data-url="{{ route('unHideTweet', [$tweet->id]) }}">
