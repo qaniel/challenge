@@ -33,7 +33,8 @@
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
                             <p class="card-text">{{ $tweet->text }}</p>
-                            <a class="card-link" href="">{{ __('Hide') }}</a>
+                            <button class="btn btn-link hides-twitter-status" data-url="{{ route('hideTweet', [$tweet->id]) }}">{{ __('Hide') }}</button>
+                            <button class="btn btn-link unhide-twitter-status" data-url="{{ route('unHideTweet', [$tweet->id]) }}">{{ __('Unhide') }}</button>
                         </div>
                     </div>
                 @endforeach
