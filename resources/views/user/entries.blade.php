@@ -45,13 +45,16 @@
                             <p class="card-text">{{ $tweet->text }}</p>
                             @auth
                                 @if(Auth::user()->twitter_username === $tweet->user->name)
-                                    @if($tweet->hidden)
-                                        <button class="btn btn-link unhide-twitter-status"
-                                                data-url="{{ route('unHideTweet', [$tweet->id]) }}">{{ __('Unhide') }}</button>
-                                    @else
-                                        <button class="btn btn-link hides-twitter-status"
-                                                data-url="{{ route('hideTweet', [$tweet->id]) }}">{{ __('Hide') }}</button>
-                                    @endif
+                                    <button
+                                        class="btn btn-link unhide-twitter-status {{ $tweet->hidden ? '' : 'd-none' }}"
+                                        data-url="{{ route('unHideTweet', [$tweet->id]) }}">
+                                        {{ __('Unhide') }}
+                                    </button>
+                                    <button
+                                        class="btn btn-link hides-twitter-status {{ $tweet->hidden ? 'd-none' : '' }}"
+                                        data-url="{{ route('hideTweet', [$tweet->id]) }}">
+                                        {{ __('Hide') }}
+                                    </button>
                                 @endif
                             @endauth
                         </div>

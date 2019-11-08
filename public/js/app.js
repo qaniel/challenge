@@ -36983,27 +36983,33 @@ __webpack_require__.r(__webpack_exports__);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()('document').ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hides-twitter-status').on('click', function () {
-    var element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
+    var button = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
     var token = jquery__WEBPACK_IMPORTED_MODULE_0___default()("meta[name='csrf-token']").attr("content");
     var api_token = jquery__WEBPACK_IMPORTED_MODULE_0___default()("meta[name='api_token']").attr("content");
-    element.data('twitterId');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.post(element.data('url'), {
+    button.data('twitterId');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.post(button.data('url'), {
       _token: token,
       api_token: api_token
+    }).done(function (response) {
+      button.prev().toggleClass('d-none');
+      button.toggleClass('d-none');
     });
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.unhide-twitter-status').on('click', function () {
-    var element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
+    var button = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
     var token = jquery__WEBPACK_IMPORTED_MODULE_0___default()("meta[name='csrf-token']").attr("content");
     var api_token = jquery__WEBPACK_IMPORTED_MODULE_0___default()("meta[name='api_token']").attr("content");
-    element.data('twitterId');
+    button.data('twitterId');
     jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-      url: element.data('url'),
+      url: button.data('url'),
       type: 'DELETE',
       data: {
         '_token': token,
         'api_token': api_token
       }
+    }).done(function (response) {
+      button.next().toggleClass('d-none');
+      button.toggleClass('d-none');
     });
   });
 });
