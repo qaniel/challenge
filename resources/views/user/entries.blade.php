@@ -30,11 +30,30 @@
             </article>
             <aside class="col-md-4">
                 @foreach($tweets as $tweet)
+                    @guest
+                        @if($tweet->hidden)
+                            @continue
+                        @endif
+                    @endguest
+                    @auth
+                        @if($tweet->hidden && Auth::user()->twitter_username !== $tweet->user->name)
+                            @continue
+                        @endif
+                    @endauth
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
                             <p class="card-text">{{ $tweet->text }}</p>
-                            <button class="btn btn-link hides-twitter-status" data-url="{{ route('hideTweet', [$tweet->id]) }}">{{ __('Hide') }}</button>
-                            <button class="btn btn-link unhide-twitter-status" data-url="{{ route('unHideTweet', [$tweet->id]) }}">{{ __('Unhide') }}</button>
+                            @auth
+                                @if(Auth::user()->twitter_username === $tweet->user->name)
+                                    @if($tweet->hidden)
+                                        <button class="btn btn-link unhide-twitter-status"
+                                                data-url="{{ route('unHideTweet', [$tweet->id]) }}">{{ __('Unhide') }}</button>
+                                    @else
+                                        <button class="btn btn-link hides-twitter-status"
+                                                data-url="{{ route('hideTweet', [$tweet->id]) }}">{{ __('Hide') }}</button>
+                                    @endif
+                                @endif
+                            @endauth
                         </div>
                     </div>
                 @endforeach

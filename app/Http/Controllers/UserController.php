@@ -29,8 +29,9 @@ class UserController extends Controller
     {
         $entries = Entry::with('user')->where('user_id', '=', $user->id)->paginate(3);
         $userTweets = $this->getUserTweets($user->twitter_username);
-        
-        return view('user.entries', ['entries' => $entries, 'user' => $user, 'tweets' => $userTweets]);
+        $markedTweets = $this->markHiddenTweets($userTweets, $user->id);
+
+        return view('user.entries', ['entries' => $entries, 'user' => $user, 'tweets' => $markedTweets]);
     }
 
     private function getUserTweets(string $twitterUserName = ''): array
@@ -39,13 +40,11 @@ class UserController extends Controller
             return [];
         }
         try {
-            $userTweets = $this->twitterClient->request('/statuses/user_timeline.json', 'GET', [
+            return $this->twitterClient->request('/statuses/user_timeline.json', 'GET', [
                 'count' => 5,
                 'screen_name' => $twitterUserName,
                 'exclude_replies' => true,
             ]);
-
-            return $this->markHiddenTweets($userTweets);
         } catch (Exception $e) {
             report($e);
 
@@ -53,19 +52,17 @@ class UserController extends Controller
         }
     }
 
-    private function markHiddenTweets(array $tweets): array
+    private function markHiddenTweets(array $tweets, int $userId): array
     {
         $hiddenTweets = $this->hiddenTweets::with('user')
-            ->where('user_id', '=', Auth::user()->id)
+            ->where('user_id', '=', $userId)
             ->get(['tweet_id'])
             ->map(function (HiddenTweets $item) {
                 return $item->tweet_id;
             })->toArray();
 
         foreach ($tweets as $tweet) {
-            if (in_array($tweet->id, $hiddenTweets)) {
-                $tweet->hidden = true;
-            }
+            $tweet->hidden = in_array($tweet->id, $hiddenTweets, false) ? true : false;
         }
 
         return $tweets;
