@@ -64,6 +64,9 @@
                         <li class="nav-item">
                             <a class="nav-link nav__link {{ Route::currentRouteName() === 'showEntryForm' ? 'nav__link--active' : '' }}" href="{{ route('showEntryForm') }}">{{ __('Create Entry') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav__link {{ Route::currentRouteName() === 'showUserEntries' ? 'nav__link--active' : '' }}" href="{{ route('showUserEntries', [Auth::user()->id]) }}">{{ __('My Page') }}</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown " class="nav-link dropdown-toggle nav__link" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
